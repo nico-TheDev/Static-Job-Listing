@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+
+$DesaturatedDarkCyan: hsl(180, 29%, 50%);
+$bg: hsl(180, 52%, 96%);
+$filter_bg: hsl(180, 31%, 95%);
+$DarkGrayishCyan: hsl(180, 8%, 52%);
+$VeryDarkGrayishCyan: hsl(180, 14%, 20%);
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 15px;
+
+    @media only screen and (max-width:600px){
+        font-size: 80%;
+    }
+}
+
+body {
+    line-height: 1.5;
+    font-family: "Spartan", sans-serif;
+    font-weight: 500;
+    color: $DesaturatedDarkCyan;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 500;
+    color: inherit;
+    transition: 300ms;
+}
+
+span{
+    display: inline-block;
+    font-weight: bold;
+}
+
+// HEADER
+
+.header {
+    min-height: 100vh;
+    background-color: $bg;
+    padding-bottom: 5rem;
+    &__head {
+        height: 20vh;
+        background-color: $DesaturatedDarkCyan;
+        background-image: url(/images/bg-header-desktop.svg);
+        background-size: cover;
+    }
+
+    &__list {
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        display: grid;
+        gap: 2rem;
+
+        & > *{
+            background-color: white;
+            box-shadow: 0 0 1rem rgba(black,0.2);
+            padding: 1.5rem 3rem;
+
+            @media only screen and (max-width:600px){
+                padding: calc(1.5rem * 0.5) 1.5rem;
+            }
+        
+        }
+    }
+
+    &__filter {
+        transform: translateY(-50%);
+        padding: 1.5rem 2rem;
+        border-radius: 5px;
+        background-color: white;
+        display: flex;
+        visibility: hidden;
+
+        @media only screen and (max-width:600px){
+            padding: calc(1.5rem * 0.5) 1rem;
+        }
+    }
+}
+
+.joblist{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    & > *{
+        background-color: white;
+        box-shadow: 0 0 1rem rgba(black,0.2);
+        padding: 1.5rem 3rem;
+
+        @media only screen and (max-width:600px){
+            padding: calc(1.5rem * 0.5) 1.5rem;
+        }
+    
+    }
+}
+
+
+.jobpost{
+    display: flex;
+    align-items: center;
+    border-left: 5px solid transparent;
+    border-radius: 10px;
+
+    @media only screen and (max-width:600px){
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__img{
+
+        width: 6rem;
+        height: 6rem;
+        @media only screen and (max-width:600px){
+            width: 5rem;
+            height: 5rem;
+            margin-top: -2.5rem;
+            margin-bottom: 5px;
+        }
+    }
+
+    &__details{
+        margin-left: 1.5rem;
+        display: grid;
+        gap: 10px;
+
+        @media only screen and (max-width:600px){
+            margin-left: 0;
+        }
+    
+    }
+
+    &__role{
+        color: $VeryDarkGrayishCyan;
+        font-size: 1.5rem;
+
+        @media only screen and (max-width:600px){
+            font-size: 1.3rem;
+        }
+    }
+
+    &__status{
+        display: flex;
+        align-items: center;
+
+        & > *{
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+    }
+
+    &__date{
+        display: flex;
+        align-items: center;
+        color: $DarkGrayishCyan;
+        font-weight: medium;
+        @media only screen and (max-width:600px){
+            padding-bottom: 1rem;
+        }
+
+
+        & > * {
+            margin-right: 10px;
+        }
+    }
+
+    &__categories{
+        display: block;
+        margin-left: auto;
+
+        @media only screen and (max-width:600px){
+            margin-left: none;
+            width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-top: 1px solid $DesaturatedDarkCyan;
+            
+    
+        }
+    
+    }
+}
+
+.category-btn{
+    background-color: $filter_bg;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: calc(max-content - 10px);
+    height: calc(max-content = 10px);
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    @media only screen and (max-width:600px){
+        margin-left: 0;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    &:hover{
+        background-color: $DesaturatedDarkCyan;
+        color: white;
+    }
+}
+
+.new,
+.featured
+{
+    font-size: 0.8rem;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.new{
+    background-color: $DesaturatedDarkCyan;
+}
+
+.featured{
+    background-color: $VeryDarkGrayishCyan;
+}
+
+.dot{
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: $DarkGrayishCyan;
+}
+
+.filter-category{
+    background-color: $filter_bg;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-left: 1rem;
+    width: calc(max-content - 10px);
+    height: calc(max-content 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-category{
+    background-color: $DesaturatedDarkCyan;
+    height: 100%;
+    width: 2.5rem;
+    margin-left: 10px;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    span{
+        pointer-events: none;
+        color: white;
+        position: relative;
+        top: 3px;
+    }
+
+    &:hover{
+        background-color: black;
+    }
+}
+.clear{
+    margin-left: auto;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.specialBorder{
+    border-color: $DesaturatedDarkCyan;
+}

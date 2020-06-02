@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Spartan", sans-serif;
+  font-weight: 500;
+  color: #5ba4a4;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: 500;
+  color: inherit;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+span {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.header {
+  min-height: 100vh;
+  background-color: #effafa;
+  padding-bottom: 5rem;
+}
+
+.header__head {
+  height: 20vh;
+  background-color: #5ba4a4;
+  background-image: url(/images/bg-header-desktop.svg);
+  background-size: cover;
+}
+
+.header__list {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  gap: 2rem;
+}
+
+.header__list > * {
+  background-color: white;
+  -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .header__list > * {
+    padding: calc(1.5rem * 0.5) 1.5rem;
+  }
+}
+
+.header__filter {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 1.5rem 2rem;
+  border-radius: 5px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .header__filter {
+    padding: calc(1.5rem * 0.5) 1rem;
+  }
+}
+
+.joblist {
+  width: 80%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  gap: 2rem;
+}
+
+.joblist > * {
+  background-color: white;
+  -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .joblist > * {
+    padding: calc(1.5rem * 0.5) 1.5rem;
+  }
+}
+
+.jobpost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-left: 5px solid transparent;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.jobpost__img {
+  width: 6rem;
+  height: 6rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost__img {
+    width: 5rem;
+    height: 5rem;
+    margin-top: -2.5rem;
+    margin-bottom: 5px;
+  }
+}
+
+.jobpost__details {
+  margin-left: 1.5rem;
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost__details {
+    margin-left: 0;
+  }
+}
+
+.jobpost__role {
+  color: #2c3a3a;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost__role {
+    font-size: 1.3rem;
+  }
+}
+
+.jobpost__status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.jobpost__status > * {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.jobpost__date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #7b8e8e;
+  font-weight: medium;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost__date {
+    padding-bottom: 1rem;
+  }
+}
+
+.jobpost__date > * {
+  margin-right: 10px;
+}
+
+.jobpost__categories {
+  display: block;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .jobpost__categories {
+    margin-left: none;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid #5ba4a4;
+  }
+}
+
+.category-btn {
+  background-color: #eef6f6;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: calc(-webkit-max-content - 10px);
+  width: calc(-moz-max-content - 10px);
+  width: calc(max-content - 10px);
+  height: calc(-webkit-max-content = 10px);
+  height: calc(-moz-max-content = 10px);
+  height: calc(max-content = 10px);
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .category-btn {
+    margin-left: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.category-btn:hover {
+  background-color: #5ba4a4;
+  color: white;
+}
+
+.new,
+.featured {
+  font-size: 0.8rem;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.new {
+  background-color: #5ba4a4;
+}
+
+.featured {
+  background-color: #2c3a3a;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #7b8e8e;
+}
+
+.filter-category {
+  background-color: #eef6f6;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  padding-left: 1rem;
+  width: calc(-webkit-max-content - 10px);
+  width: calc(-moz-max-content - 10px);
+  width: calc(max-content - 10px);
+  height: calc(-webkit-max-content 10px);
+  height: calc(-moz-max-content 10px);
+  height: calc(max-content 10px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-category {
+  background-color: #5ba4a4;
+  height: 100%;
+  width: 2.5rem;
+  margin-left: 10px;
+  font-size: 2rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.delete-category span {
+  pointer-events: none;
+  color: white;
+  position: relative;
+  top: 3px;
+}
+
+.delete-category:hover {
+  background-color: black;
+}
+
+.clear {
+  margin-left: auto;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.specialBorder {
+  border-color: #5ba4a4;
+}
+/*# sourceMappingURL=style.css.map */
