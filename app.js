@@ -63,10 +63,8 @@ function addCapsules(newTab, featuredTab) {
     return markup;
 }
 
-async function renderTargetJobs() {}
-
 function renderTags(job) {
-    let tags;
+    let tags = getTags(job);
     let markup = "";
 
     if ("tools" in job && "languages" in job) {
@@ -94,11 +92,10 @@ function checkVisibility() {
 
 function AddTags(e) {
     if (e.target.matches(".category-btn")) {
-        console.log("add it to filter");
         const tag = e.target.textContent;
         if (!filterInfo.includes(tag)) filterInfo.push(tag);
         updateLocalStorage();
-        console.log(filterInfo);
+        // console.log(filterInfo);
         renderFilterTags();
         filterJobs();
     }
@@ -132,59 +129,66 @@ function restoreLocalStorage() {
     filterJobs();
 }
 
-function clearFilters(){
+function clearFilters() {
     filterInfo.length = 0;
     updateLocalStorage();
-    checkVisibility()
+    checkVisibility();
     renderFilterTags();
-    renderJobs(getData());    
+    clearJobList();
+    renderJobs(getData());
 }
 
-function updateLocalStorage(){
-    localStorage.setItem('data',JSON.stringify(filterInfo));
+function updateLocalStorage() {
+    localStorage.setItem("data", JSON.stringify(filterInfo));
 }
 
-function removeTags(e){
-    if(e.target.matches('.delete-category')){
+function removeTags(e) {
+    if (e.target.matches(".delete-category")) {
         const tagName = e.target.parentElement.firstElementChild.textContent;
         console.log(tagName);
-        const index = filterInfo.findIndex(cur => cur === tagName);
-        filterInfo.splice(index,1);
+        const index = filterInfo.findIndex((cur) => cur === tagName);
+        filterInfo.splice(index, 1);
         checkVisibility();
         updateLocalStorage();
-        renderFilterTags();
         filterJobs();
+        renderFilterTags();
     }
 }
 
-async function filterJobs(filterList){
+async function filterJobs() {
     const jobData = await getData();
     const filteredJobs = [];
-    jobData.forEach(job=>{
-        let jobTags;
-        
-        if ("tools" in job && "languages" in job) {
-            jobTags = [...job.tools, ...job.languages, job.level, job.role];
-        } else if ("tools" in job) {
-            jobTags = [...job.tools, job.level, job.role];
-        } else if ("languages" in job) {
-            jobTags = [...job.languages, job.level, job.role];
-        }
+    jobData.forEach((job) => {
+        let jobTags = getTags(job);
 
-        if(jobTags.join(',').includes(filterInfo.join(','))){
-            filteredJobs.push(job);
-        }
+        const present = filterInfo.every((tag) => jobTags.includes(tag));
+
+        if(present) filteredJobs.push(job);
     });
 
-    jobList.innerHTML = '';
+    clearJobList();
     renderJobs(filteredJobs);
-
 }
 
+function clearJobList() {
+    jobList.innerHTML = "";
+}
+
+function getTags(job){
+    let jobTags;
+    if ("tools" in job && "languages" in job) {
+        jobTags = [...job.tools, ...job.languages, job.level, job.role];
+    } else if ("tools" in job) {
+        jobTags = [...job.tools, job.level, job.role];
+    } else if ("languages" in job) {
+        jobTags = [...job.languages, job.level, job.role];
+    }
+    return jobTags;
+}
 //Initial Render
 renderJobs(getData());
 
 // Event Listeners
 jobList.addEventListener("click", AddTags);
 clearBtn.addEventListener("click", clearFilters);
-filters.addEventListener('click',removeTags);
+filters.addEventListener("click", removeTags);
